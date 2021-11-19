@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Vouchers">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Voucher" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="ID" type="xs:unsignedInt"/>
+                            <xs:element name="Type" type="VoucherType"/>
+                            <xs:element name="Country" type="xs:string"/>
+                            <xs:element name="NumberOfDays" type="xs:unsignedInt"/>
+                            <xs:element name="Transport" type="TransportType"/>
+                            <xs:element name="HotelCharacteristics">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Stars" type="xs:unsignedInt"/>
+                                        <xs:element name="Meals" type="MealsType"/>
+                                        <xs:element name="NumberOfPeople" type="xs:unsignedInt"/>
+                                        <xs:element name="HasTV" type="xs:boolean"/>
+                                        <xs:element name="HasAC" type="xs:boolean"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Cost" type="xs:double"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:simpleType name="VoucherType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Weekend"/>
+            <xs:enumeration value="Excursion"/>
+            <xs:enumeration value="Recreation"/>
+            <xs:enumeration value="Pilgrimage"/>
+            <xs:enumeration value="Other"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="TransportType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Plane"/>
+            <xs:enumeration value="Train"/>
+            <xs:enumeration value="Bus"/>
+            <xs:enumeration value="Car"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="MealsType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="RO"/>
+            <xs:enumeration value="HB"/>
+            <xs:enumeration value="BB"/>
+            <xs:enumeration value="FB"/>
+            <xs:enumeration value="AI"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
